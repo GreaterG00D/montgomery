@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import dynamic from "next/dynamic";
 import WMLogo from "@/components/ui/WMLogo";
 import Hero from "@/components/sections/Hero";
+import LinksSection from "@/components/sections/LinksSection";
 
 // Dynamically import heavy components
 const Loader = dynamic(() => import("@/components/ui/Loader"), { ssr: false });
@@ -44,6 +45,7 @@ export default function Home() {
             <Hero />
             <Socials />
             <RingSection />
+            <LinksSection />
           </main>
         </div>
       </SmoothScroller>

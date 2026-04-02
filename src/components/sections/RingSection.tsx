@@ -91,10 +91,8 @@ export default function RingSection() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: "top",
             display: "block",
             borderRadius: "2px",
-            clipPath: "inset(0 0 50px 0)",
           }}
         />
 
@@ -171,8 +169,8 @@ export default function RingSection() {
         <div style={{
           position: "absolute",
           bottom: "-8px",
-          left: "12px",
-          right: "12px",
+          left: "4px",
+          right: "4px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -242,7 +240,7 @@ export default function RingSection() {
             <span style={{ fontSize: "2rem", letterSpacing: "0.12em", color: "#fff", lineHeight: 1 }}>
               Shop Now
             </span>
-            <span style={{ fontSize: "0.9rem", letterSpacing: "0.2em", color: "rgba(255,255,255,0.8)", marginTop: "4px" }}>
+            <span style={{ fontSize: "20px", letterSpacing: "0.2em", color: "rgba(255,255,255,0.8)", marginTop: "4px" }}>
               rockinpins.com
             </span>
           </a>
