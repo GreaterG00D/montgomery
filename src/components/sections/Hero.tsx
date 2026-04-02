@@ -127,7 +127,7 @@ export default function Hero() {
             className="block leading-none text-white"
             style={{
               fontFamily: "var(--font-bebas), 'Impact', sans-serif",
-              fontSize: "clamp(2.5rem, min(10vw, 17vh), 11rem)",
+              fontSize: "clamp(4.5rem, min(18vw, 22vh), 11rem)",
               letterSpacing: "0.02em",
             }}
           >
@@ -143,7 +143,7 @@ export default function Hero() {
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
                 fontFamily: "var(--font-bebas), 'Impact', sans-serif",
-                fontSize: "clamp(2.5rem, min(10vw, 17vh), 11rem)",
+                fontSize: "clamp(4.5rem, min(18vw, 22vh), 11rem)",
                 lineHeight: 1,
               }}
             >
