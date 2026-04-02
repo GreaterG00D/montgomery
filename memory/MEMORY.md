@@ -1,0 +1,2 @@
+- [William Montgomery Website Redesign](project_website_redesign.md) — Next.js 16 cinematic 3D site with R3F, GSAP, Lenis; fire/ice palette, Bebas Neue headlines
+- [James Ryan - User Profile](user_james_profile.md) — Owner of WM brand site; high-energy creator, YouTube/Cameo/merch
