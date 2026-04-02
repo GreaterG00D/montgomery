@@ -41,7 +41,8 @@ export default function ScrollPrompt() {
       </span>
       {/* Mouse icon */}
       <div className="w-5 h-8 border border-white/20 rounded-full flex items-start justify-center pt-1.5">
-        <div ref={dotRef} className="w-1 h-1 rounded-full bg-[#ff6b00]" />
+        {/* Accent changes per section feel */}
+        <div ref={dotRef} className="w-1 h-1 rounded-full bg-[#00aaff]" />
       </div>
     </div>
   );

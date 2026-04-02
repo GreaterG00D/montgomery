@@ -10,7 +10,8 @@ export default function About() {
     >
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "rgba(5,5,8,0.72)" }}
+        // Transparent enough for the fixed rings to remain visible.
+        style={{ background: "rgba(5,5,8,0.12)" }}
         aria-hidden="true"
       />
     </section>

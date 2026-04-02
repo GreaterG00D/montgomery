@@ -106,7 +106,8 @@ export default function Hero() {
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 70% at 50% 45%, transparent 40%, rgba(5,5,8,0.6) 100%)",
+            // Reduce edge darkness so rings stay visible near the scroll prompt.
+            "radial-gradient(ellipse 80% 70% at 50% 45%, transparent 55%, rgba(5,5,8,0.25) 100%)",
         }}
         aria-hidden="true"
       />

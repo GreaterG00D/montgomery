@@ -25,7 +25,8 @@ export default function PersistentRings() {
           powerPreference: "high-performance",
           toneMapping: THREE.NoToneMapping,
         }}
-        style={{ width: "100%", height: "100%", background: "#050508" }}
+        /* Keep transparent so section overlays can "reveal" the rings. */
+        style={{ width: "100%", height: "100%", background: "transparent" }}
       >
         <AdaptiveDpr pixelated />
         <ambientLight intensity={0.05} />

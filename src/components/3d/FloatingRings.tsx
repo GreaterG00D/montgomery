@@ -27,7 +27,8 @@ function Ring({ radius, tube, color, rotation, speed, phase = 0 }: RingProps) {
   return (
     <mesh ref={ref}>
       <torusGeometry args={[radius, tube, 3, 80]} />
-      <meshBasicMaterial color={color} transparent opacity={0.15} side={THREE.DoubleSide} />
+      {/* Slightly stronger opacity so the rings read through solid/near-solid section backgrounds */}
+      <meshBasicMaterial color={color} transparent opacity={0.4} side={THREE.DoubleSide} />
     </mesh>
   );
 }

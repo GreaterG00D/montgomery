@@ -92,13 +92,15 @@ section {
   background: transparent !important;
 }
 
-/* Everything else is solid — matches Hero's darkened appearance */
-#about,
+/* Section backgrounds: keep them dark, but transparent enough for rings. */
+#about {
+  background: rgba(5, 5, 8, 0.18);
+}
 #work,
 #showcase,
 #merch,
 #contact {
-  background: #050508;
+  background: rgba(5, 5, 8, 0.65);
 }
 
 /* ─── Scrollbar ─────────────────────────────────────────────────── */
@@ -294,7 +296,8 @@ section {
   border-top: 1px solid rgba(255, 255, 255, 0.04);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   padding: 14px 0;
-  background: rgba(255, 255, 255, 0.015);
+  /* Keep divider "ghost transparent" so the fixed rings stay visible. */
+  background: transparent;
 }
 
 .marquee-track {
@@ -321,7 +324,8 @@ section {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--accent-orange);
+  /* New-section accent for the divider foreground dots. */
+  background: var(--accent-blue);
   flex-shrink: 0;
 }
 
