@@ -17,7 +17,9 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
           yPercent: -100,
           duration: 0.8,
           ease: "power4.inOut",
-          onComplete,
+          // Flip app visibility as the wipe starts, not after it ends.
+          // This prevents seeing the rings alone before the hero mounts in.
+          onStart: onComplete,
         });
       },
     });
@@ -51,9 +53,6 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
     >
       {/* Logo / name */}
       <div className="mb-12 text-center">
-        <p className="text-[10px] tracking-[0.3em] uppercase text-[#666680] mb-3">
-          Loading
-        </p>
         <h1
           className="font-display text-white"
           style={{

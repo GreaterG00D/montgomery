@@ -36,7 +36,7 @@ export default function Home() {
           style={{
             width: "100%",
             opacity: loaded ? 1 : 0,
-            transition: "opacity 0.5s ease",
+            transition: "opacity 0s linear",
             pointerEvents: loaded ? "all" : "none",
           }}
         >

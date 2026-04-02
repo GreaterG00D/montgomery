@@ -81,7 +81,6 @@ export default function Hero() {
   const textStyle: React.CSSProperties = {
     opacity: Math.max(0, 1 - progress * 2.8),
     transform: `translateY(${progress * -50}px)`,
-    ...(progress > 0.01 && { filter: `blur(${progress * 10}px)` }),
   };
 
   return (
