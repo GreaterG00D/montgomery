@@ -27,7 +27,7 @@ export default function WMLogo() {
           inset: 0,
           border: "1.5px solid rgba(255,107,0,0.5)",
           transform: "rotate(45deg)",
-          background: "rgba(255,255,255,0.95)",
+          background: "rgba(255,90,0,0.55)",
         }}
       />
       {/* Inner tilted square — dark fill cuts out the center */}
