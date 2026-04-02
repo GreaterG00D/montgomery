@@ -167,6 +167,86 @@ export default function RingSection() {
           pointerEvents: "none",
           zIndex: -1,
         }} />
+        {/* ── CTA — inside frame, pinned to bottom ──────────────── */}
+        <div style={{
+          position: "absolute",
+          bottom: "-8px",
+          left: "12px",
+          right: "12px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.75rem",
+          zIndex: 10,
+        }}>
+          {/* Headline */}
+          <div
+            style={{ textAlign: "center", transition: "opacity 0.25s" }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = "0.7")}
+            onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+          >
+            <p style={{
+              fontFamily: "var(--font-bebas), sans-serif",
+              fontSize: "clamp(2.8rem, 8vw, 6rem)",
+              lineHeight: 0.92,
+              letterSpacing: "0.02em",
+              textTransform: "uppercase",
+              color: "#fff",
+              margin: 0,
+            }}>
+              Buy This
+            </p>
+            <p style={{
+              fontFamily: "var(--font-bebas), sans-serif",
+              fontSize: "clamp(2.8rem, 8vw, 6rem)",
+              lineHeight: 0.92,
+              letterSpacing: "0.02em",
+              textTransform: "uppercase",
+              background: "linear-gradient(135deg, #ff2d2d 0%, #ff6b00 50%, #ffaa00 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              margin: 0,
+            }}>
+              Shirt
+            </p>
+          </div>
+
+          <a
+            href="https://www.rockinpins.com/product/william-montgomery-american-flag-tie-dye-shirt"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "100%",
+              padding: "1.25rem 0",
+              borderRadius: "999px",
+              fontFamily: "var(--font-bebas), sans-serif",
+              textTransform: "uppercase",
+              textDecoration: "none",
+              background: "linear-gradient(135deg, #ff2d2d, #ff6b00)",
+              transition: "transform 0.2s, box-shadow 0.2s",
+              boxShadow: "0 0 0 rgba(255,107,0,0)",
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = "scale(1.05)";
+              e.currentTarget.style.boxShadow = "0 0 36px rgba(255,107,0,0.6)";
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.boxShadow = "0 0 0 rgba(255,107,0,0)";
+            }}
+          >
+            <span style={{ fontSize: "2rem", letterSpacing: "0.12em", color: "#fff", lineHeight: 1 }}>
+              Shop Now
+            </span>
+            <span style={{ fontSize: "0.9rem", letterSpacing: "0.2em", color: "rgba(255,255,255,0.8)", marginTop: "4px" }}>
+              rockinpins.com
+            </span>
+          </a>
+        </div>
       </div>
     </section>
   );
