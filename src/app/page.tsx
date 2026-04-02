@@ -2,18 +2,15 @@
 
 import { useState, useCallback } from "react";
 import dynamic from "next/dynamic";
-import SectionDivider from "@/components/ui/SectionDivider";
+import WMLogo from "@/components/ui/WMLogo";
 import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
-import Work from "@/components/sections/Work";
-import Showcase from "@/components/sections/Showcase";
-import Merch from "@/components/sections/Merch";
-import Contact from "@/components/sections/Contact";
 
 // Dynamically import heavy components
 const Loader = dynamic(() => import("@/components/ui/Loader"), { ssr: false });
 const SmoothScroller = dynamic(() => import("@/components/layout/SmoothScroller"), { ssr: false });
 const PersistentRings = dynamic(() => import("@/components/3d/PersistentRings"), { ssr: false });
+const Socials = dynamic(() => import("@/components/sections/Socials"), { ssr: false });
+const RingSection = dynamic(() => import("@/components/sections/RingSection"), { ssr: false });
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
@@ -24,7 +21,10 @@ export default function Home() {
 
   return (
     <>
-      {/* Single fixed rings canvas — Hero + About scroll past it */}
+      {/* Fixed logo top-left */}
+      <WMLogo />
+
+      {/* Single fixed canvas — rings + bubbles, never clipped by sections */}
       <PersistentRings />
 
       {/* Loader — shown on first load, then slides away */}
@@ -42,15 +42,8 @@ export default function Home() {
         >
           <main id="main-content" style={{ width: "100%", overflowX: "hidden" }}>
             <Hero />
-            <About />
-            <SectionDivider />
-            <Work />
-            <SectionDivider />
-            <Showcase />
-            <SectionDivider />
-            <Merch />
-            <SectionDivider />
-            <Contact />
+            <Socials />
+            <RingSection />
           </main>
         </div>
       </SmoothScroller>

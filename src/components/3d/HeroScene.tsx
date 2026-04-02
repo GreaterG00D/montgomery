@@ -2,10 +2,9 @@
 
 import { Suspense, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Environment, AdaptiveDpr, AdaptiveEvents } from "@react-three/drei";
+import { AdaptiveDpr, AdaptiveEvents } from "@react-three/drei";
 import * as THREE from "three";
 import EnergyOrb from "./EnergyOrb";
-import ParticleField from "./ParticleField";
 import type { MousePosition } from "@/hooks/useMousePosition";
 
 /* ─── Camera rig — follows mouse smoothly ──────────────────────── */
@@ -84,19 +83,7 @@ export default function HeroScene({ mouse, scrollProgress }: HeroSceneProps) {
           mouseY={mouse.current?.y ?? 0}
           scrollProgress={scrollProgress}
         />
-        <ParticleField
-          count={600}
-          color="#ff6b00"
-          spread={7}
-          scrollProgress={scrollProgress}
-        />
-        {/* Secondary cooler particles */}
-        <ParticleField
-          count={200}
-          color="#00aaff"
-          spread={9}
-          scrollProgress={scrollProgress}
-        />
+
       </Suspense>
     </Canvas>
   );

@@ -272,22 +272,6 @@ export default function Merch() {
             </span>
           </div>
 
-          <div className="relative z-10">
-            <p className="text-[10px] tracking-[0.3em] uppercase text-[#ff6b00] mb-3">
-              Full Collection
-            </p>
-            <h3
-              className="text-white"
-              style={{
-                fontFamily: "var(--font-bebas), sans-serif",
-                fontSize: "clamp(2rem, 5vw, 3.5rem)",
-                letterSpacing: "0.02em",
-              }}
-            >
-              Browse Everything
-            </h3>
-          </div>
-
           <a
             href="https://williamfmontgomery.com/merch"
             target="_blank"
