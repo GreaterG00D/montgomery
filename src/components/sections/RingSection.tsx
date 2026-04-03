@@ -169,8 +169,8 @@ export default function RingSection() {
         <div style={{
           position: "absolute",
           bottom: "-8px",
-          left: "4px",
-          right: "4px",
+          left: "-55px",
+          right: "-55px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
