@@ -8,6 +8,9 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+/** Same thickness as Hero "GONNA" stroke: clamp(4px, 0.04em, 18px) — em tied to headline font size. */
+const GONNA_OUTLINE_FONT = "clamp(4.5rem, min(18vw, 22vh), 11rem)";
+
 export default function RingSection() {
   const sectionRef       = useRef<HTMLElement>(null);
   const frameRef         = useRef<HTMLDivElement>(null);
@@ -64,7 +67,11 @@ export default function RingSection() {
         justifyContent: "center",
       }}
     >
-      <div ref={frameRef} style={{ position: "relative", width: "min(480px, 88vw)", aspectRatio: "9/16" }}>
+      <div
+        id="ring-orb-target"
+        ref={frameRef}
+        style={{ position: "relative", width: "min(480px, 88vw)", aspectRatio: "9/16" }}
+      >
 
         {/* ── Layer 1: black-filled rectangles (behind video) ───── */}
         <div
@@ -107,7 +114,8 @@ export default function RingSection() {
             inset: 0,
             borderRadius: "4px",
             padding: "1.5px",
-            background: "conic-gradient(from 0deg, #ff2d2d, #ff6b00, #ffaa00, transparent, transparent, #ff2d2d)",
+            background:
+              "conic-gradient(from 0deg, var(--accent-red), var(--accent-orange), var(--accent-amber), transparent, transparent, var(--accent-red))",
             WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
             WebkitMaskComposite: "xor",
             maskComposite: "exclude",
@@ -124,7 +132,8 @@ export default function RingSection() {
             inset: 0,
             borderRadius: "4px",
             padding: "1px",
-            background: "conic-gradient(from 180deg, transparent, transparent, #ffaa00, #ff6b00, transparent)",
+            background:
+              "conic-gradient(from 180deg, transparent, transparent, var(--accent-amber), var(--accent-orange), transparent)",
             WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
             WebkitMaskComposite: "xor",
             maskComposite: "exclude",
@@ -147,10 +156,10 @@ export default function RingSection() {
                 height: "20px",
                 [isBottom ? "bottom" : "top"]: "-8px",
                 [isRight  ? "right"  : "left"]: "-8px",
-                borderTop:    !isBottom ? "2px solid #ff6b00" : undefined,
-                borderBottom:  isBottom ? "2px solid #ff6b00" : undefined,
-                borderLeft:   !isRight  ? "2px solid #ff6b00" : undefined,
-                borderRight:   isRight  ? "2px solid #ff6b00" : undefined,
+                borderTop:    !isBottom ? "2px solid var(--accent-orange)" : undefined,
+                borderBottom:  isBottom ? "2px solid var(--accent-orange)" : undefined,
+                borderLeft:   !isRight  ? "2px solid var(--accent-orange)" : undefined,
+                borderRight:   isRight  ? "2px solid var(--accent-orange)" : undefined,
               }}
             />
           );
@@ -161,7 +170,8 @@ export default function RingSection() {
           position: "absolute",
           inset: "-30px",
           borderRadius: "4px",
-          background: "radial-gradient(ellipse at center, rgba(255,107,0,0.12) 0%, transparent 70%)",
+          background:
+            "radial-gradient(ellipse at center, color-mix(in srgb, var(--accent-orange) 12%, transparent) 0%, transparent 70%)",
           pointerEvents: "none",
           zIndex: -1,
         }} />
@@ -200,7 +210,8 @@ export default function RingSection() {
               lineHeight: 0.92,
               letterSpacing: "0.02em",
               textTransform: "uppercase",
-              background: "linear-gradient(135deg, #ff2d2d 0%, #ff6b00 50%, #ffaa00 100%)",
+              background:
+                "linear-gradient(135deg, var(--accent-red) 0%, var(--accent-orange) 50%, var(--accent-amber) 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -222,19 +233,25 @@ export default function RingSection() {
               padding: "1.25rem 0",
               borderRadius: "999px",
               fontFamily: "var(--font-bebas), sans-serif",
+              fontSize: GONNA_OUTLINE_FONT,
+              lineHeight: 1,
               textTransform: "uppercase",
               textDecoration: "none",
-              background: "linear-gradient(135deg, #ff2d2d, #ff6b00)",
+              background: "linear-gradient(135deg, var(--accent-red), var(--accent-orange))",
+              border: "clamp(4px, 0.04em, 18px) solid #0a0a0a",
+              boxSizing: "border-box",
               transition: "transform 0.2s, box-shadow 0.2s",
-              boxShadow: "0 0 0 rgba(255,107,0,0)",
+              boxShadow: "0 0 0 color-mix(in srgb, var(--accent-orange) 0%, transparent)",
             }}
             onMouseEnter={e => {
               e.currentTarget.style.transform = "scale(1.05)";
-              e.currentTarget.style.boxShadow = "0 0 36px rgba(255,107,0,0.6)";
+              e.currentTarget.style.boxShadow =
+                "0 0 36px color-mix(in srgb, var(--accent-orange) 60%, transparent)";
             }}
             onMouseLeave={e => {
               e.currentTarget.style.transform = "scale(1)";
-              e.currentTarget.style.boxShadow = "0 0 0 rgba(255,107,0,0)";
+              e.currentTarget.style.boxShadow =
+                "0 0 0 color-mix(in srgb, var(--accent-orange) 0%, transparent)";
             }}
           >
             <span style={{ fontSize: "2rem", letterSpacing: "0.12em", color: "#fff", lineHeight: 1 }}>

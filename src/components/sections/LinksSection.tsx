@@ -65,7 +65,13 @@ export default function LinksSection() {
       }}
     >
       {/* Top rule */}
-      <div style={{ height: "1px", background: "linear-gradient(90deg, transparent, rgba(255,107,0,0.35) 30%, rgba(255,107,0,0.35) 70%, transparent)" }} />
+      <div
+        style={{
+          height: "1px",
+          background:
+            "linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent-orange) 35%, transparent) 30%, color-mix(in srgb, var(--accent-orange) 35%, transparent) 70%, transparent)",
+        }}
+      />
 
       <div ref={rowsRef}>
         {LINKS.map((link, i) => (
@@ -89,10 +95,10 @@ export default function LinksSection() {
             }}
             onMouseEnter={e => {
               const el = e.currentTarget;
-              el.style.background = "rgba(255,107,0,0.04)";
+              el.style.background = "color-mix(in srgb, var(--accent-orange) 4%, transparent)";
               const name = el.querySelector(".row-name") as HTMLElement;
               const sweep = el.querySelector(".row-sweep") as HTMLElement;
-              if (name) name.style.color = "#ff6b00";
+              if (name) name.style.color = "var(--accent-orange)";
               if (sweep) sweep.style.transform = "scaleX(1)";
             }}
             onMouseLeave={e => {
@@ -114,7 +120,8 @@ export default function LinksSection() {
                 left: 0,
                 right: 0,
                 height: "1px",
-                background: "linear-gradient(90deg, #ff2d2d, #ff6b00, #ffaa00)",
+                background:
+                  "linear-gradient(90deg, var(--accent-red), var(--accent-orange), var(--accent-amber))",
                 transform: "scaleX(0)",
                 transformOrigin: "left",
                 transition: "transform 0.4s ease",
@@ -168,7 +175,13 @@ export default function LinksSection() {
       </div>
 
       {/* Bottom rule */}
-      <div style={{ height: "1px", background: "linear-gradient(90deg, transparent, rgba(255,107,0,0.35) 30%, rgba(255,107,0,0.35) 70%, transparent)" }} />
+      <div
+        style={{
+          height: "1px",
+          background:
+            "linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent-orange) 35%, transparent) 30%, color-mix(in srgb, var(--accent-orange) 35%, transparent) 70%, transparent)",
+        }}
+      />
     </section>
   );
 }

@@ -23,8 +23,8 @@ export default function AboutScene() {
         <AdaptiveDpr pixelated />
         <AdaptiveEvents />
         <ambientLight intensity={0.05} />
-        <pointLight position={[3, 2, 4]} color="#ff6b00" intensity={1.2} distance={10} />
-        <pointLight position={[-4, -2, 3]} color="#ff2d2d" intensity={0.8} distance={10} />
+        <pointLight position={[3, 2, 4]} color="#ff8200" intensity={1.2} distance={10} />
+        <pointLight position={[-4, -2, 3]} color="#b4232a" intensity={0.8} distance={10} />
         <FloatingRings />
       </Canvas>
     </div>

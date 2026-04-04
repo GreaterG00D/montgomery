@@ -16,7 +16,7 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#050508",
+  themeColor: "#0a0a0a",
   colorScheme: "dark",
 };
 
@@ -50,7 +50,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${bebasNeue.variable}`}
-      style={{ background: "#050508" }}
+      style={{ background: "#0a0a0a" }}
     >
       <body>{children}</body>
     </html>

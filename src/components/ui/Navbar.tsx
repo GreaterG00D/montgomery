@@ -131,7 +131,7 @@ export default function Navbar() {
               <a
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="font-display text-white text-5xl tracking-wider hover:text-[#ff6b00] transition-colors"
+                className="font-display text-white text-5xl tracking-wider hover:text-[#ff8200] transition-colors"
                 style={{ fontFamily: "var(--font-bebas), sans-serif" }}
               >
                 {link.label}

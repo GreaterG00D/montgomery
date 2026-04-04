@@ -5,11 +5,13 @@ import dynamic from "next/dynamic";
 import WMLogo from "@/components/ui/WMLogo";
 import Hero from "@/components/sections/Hero";
 import LinksSection from "@/components/sections/LinksSection";
+import { SectionThemeProvider } from "@/components/layout/SectionThemeProvider";
 
 // Dynamically import heavy components
 const Loader = dynamic(() => import("@/components/ui/Loader"), { ssr: false });
 const SmoothScroller = dynamic(() => import("@/components/layout/SmoothScroller"), { ssr: false });
 const PersistentRings = dynamic(() => import("@/components/3d/PersistentRings"), { ssr: false });
+const FloatingOrb = dynamic(() => import("@/components/3d/FloatingOrb"), { ssr: false });
 const Socials = dynamic(() => import("@/components/sections/Socials"), { ssr: false });
 const RingSection = dynamic(() => import("@/components/sections/RingSection"), { ssr: false });
 
@@ -21,12 +23,13 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      {/* Fixed logo top-left */}
-      <WMLogo />
+    <SectionThemeProvider>
+      {/* Logo: docked to hero headline until scroll, then top-left */}
+      <WMLogo siteVisible={loaded} />
 
       {/* Single fixed canvas — rings + bubbles, never clipped by sections */}
       <PersistentRings />
+      <FloatingOrb siteVisible={loaded} />
 
       {/* Loader — shown on first load, then slides away */}
       {!loaded && <Loader onComplete={handleLoadComplete} />}
@@ -41,7 +44,15 @@ export default function Home() {
             pointerEvents: loaded ? "all" : "none",
           }}
         >
-          <main id="main-content" style={{ width: "100%", overflowX: "hidden" }}>
+          <main
+            id="main-content"
+            style={{
+              position: "relative",
+              zIndex: 2,
+              width: "100%",
+              overflowX: "hidden",
+            }}
+          >
             <Hero />
             <Socials />
             <RingSection />
@@ -49,6 +60,6 @@ export default function Home() {
           </main>
         </div>
       </SmoothScroller>
-    </>
+    </SectionThemeProvider>
   );
 }

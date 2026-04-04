@@ -118,7 +118,7 @@ export default function BubbleField() {
       DATA.map(
         (d) =>
           new THREE.MeshBasicMaterial({
-            color:      new THREE.Color(d.isBlue ? "#00aaff" : "#ff6b00"),
+            color:      new THREE.Color(d.isBlue ? "#6a9fb8" : "#ff8200"),
             transparent: true,
             opacity:     d.opacity,
             blending:    THREE.AdditiveBlending,

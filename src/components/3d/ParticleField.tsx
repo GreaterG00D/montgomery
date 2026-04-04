@@ -5,6 +5,8 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import type { Points, ShaderMaterial } from "three";
 
+const PARTICLE_TIME_SCALE = 0.5;
+
 const particleVertex = /* glsl */ `
   attribute float aScale;
   attribute float aSpeed;
@@ -61,7 +63,7 @@ interface ParticleFieldProps {
 
 export default function ParticleField({
   count = 800,
-  color = "#ff6b00",
+  color = "#ff8200",
   spread = 8,
   scrollProgress = 0,
 }: ParticleFieldProps) {
@@ -102,11 +104,11 @@ export default function ParticleField({
 
   useFrame((_, delta) => {
     if (!matRef.current) return;
-    matRef.current.uniforms.uTime.value += delta;
+    matRef.current.uniforms.uTime.value += delta * PARTICLE_TIME_SCALE;
     matRef.current.uniforms.uScrollProgress.value +=
       (scrollProgress - matRef.current.uniforms.uScrollProgress.value) * 0.06;
     if (pointsRef.current) {
-      pointsRef.current.rotation.y += delta * 0.03;
+      pointsRef.current.rotation.y += delta * 0.03 * PARTICLE_TIME_SCALE;
     }
   });
 

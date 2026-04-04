@@ -5,6 +5,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { AdaptiveDpr } from "@react-three/drei";
 import * as THREE from "three";
 import PersistentParticleField from "./PersistentParticleField";
+import { useSectionTheme } from "@/components/layout/SectionThemeProvider";
 
 /* ─── Camera rig: mouse pan + scroll zoom ──────────────────────── */
 function CameraRig({
@@ -35,6 +36,7 @@ function CameraRig({
 }
 
 export default function PersistentRings() {
+  const { palette } = useSectionTheme();
   const mouseRef = useRef({ x: 0, y: 0 });
   const scrollRef = useRef(0);
 
@@ -82,13 +84,13 @@ export default function PersistentRings() {
       >
         <AdaptiveDpr pixelated />
         <ambientLight intensity={0.05} />
-        <pointLight position={[3, 2, 4]} color="#ff6b00" intensity={1.2} distance={10} />
-        <pointLight position={[-4, -2, 3]} color="#ff2d2d" intensity={0.8} distance={10} />
+        <pointLight position={[3, 2, 4]} color={palette.warmB} intensity={1.2} distance={10} />
+        <pointLight position={[-4, -2, 3]} color={palette.warmA} intensity={0.8} distance={10} />
 
         <CameraRig mouseRef={mouseRef} scrollRef={scrollRef} />
 
-        <PersistentParticleField count={600} color="#ff6b00" spread={7} clearRadius={1.5} />
-        <PersistentParticleField count={200} color="#00aaff" spread={9} clearRadius={1.8} />
+        <PersistentParticleField count={600} color={palette.warmB} spread={7} clearRadius={1.5} />
+        <PersistentParticleField count={200} color={palette.cool} spread={9} clearRadius={1.8} />
       </Canvas>
     </div>
   );

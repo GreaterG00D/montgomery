@@ -1,9 +1,13 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useLayoutEffect, type RefObject } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import type { Mesh, ShaderMaterial } from "three";
+import type { MousePosition } from "@/hooks/useMousePosition";
+
+/** Scroll journey ends at this uniform scale (circumference vs hero start). */
+const ORB_EXPAND_SCALE = 1.5;
 
 const vertexShader = /* glsl */ `
   varying vec2 vUv;
@@ -110,44 +114,91 @@ const fragmentShader = /* glsl */ `
 `;
 
 interface EnergyOrbProps {
+  /** Read each frame — avoids stale props when parent does not re-render */
+  mouseRef?: RefObject<MousePosition | null>;
   mouseX?: number;
   mouseY?: number;
   scrollProgress?: number;
+  lockedRef?: RefObject<boolean>;
+  /** 0…1 eased scroll progress toward socials — drives radius growth */
+  journeyRef?: RefObject<number>;
+  /** Section theme — matches CSS --accent-* */
+  themeA?: string;
+  themeB?: string;
+  themeC?: string;
+  /** Multiplies final mesh scale (e.g. 0.65 for paired orbs) */
+  scaleMultiplier?: number;
+  /** When set, read each frame — overrides scaleMultiplier (twin / split animation) */
+  scaleMulRef?: RefObject<number>;
 }
 
-export default function EnergyOrb({ mouseX = 0, mouseY = 0, scrollProgress = 0 }: EnergyOrbProps) {
+export default function EnergyOrb({
+  mouseRef,
+  mouseX = 0,
+  mouseY = 0,
+  scrollProgress = 0,
+  lockedRef,
+  journeyRef,
+  themeA = "#b4232a",
+  themeB = "#ff8200",
+  themeC = "#ffd24a",
+  scaleMultiplier = 1,
+  scaleMulRef,
+}: EnergyOrbProps) {
   const meshRef = useRef<Mesh>(null);
   const matRef = useRef<ShaderMaterial>(null);
 
   const uniforms = useMemo(
     () => ({
       uTime: { value: 0 },
-      uColorA: { value: new THREE.Color("#ff2d2d") },   // red
-      uColorB: { value: new THREE.Color("#ff6b00") },   // orange
-      uColorC: { value: new THREE.Color("#ffcc00") },   // yellow
+      uColorA: { value: new THREE.Color(themeA) },
+      uColorB: { value: new THREE.Color(themeB) },
+      uColorC: { value: new THREE.Color(themeC) },
     }),
     []
   );
+
+  useLayoutEffect(() => {
+    if (!matRef.current) return;
+    const u = matRef.current.uniforms;
+    u.uColorA.value.set(themeA);
+    u.uColorB.value.set(themeB);
+    u.uColorC.value.set(themeC);
+  }, [themeA, themeB, themeC]);
 
   useFrame((state, delta) => {
     if (!meshRef.current || !matRef.current) return;
 
     matRef.current.uniforms.uTime.value += delta;
 
-    // Smooth follow of mouse
-    const targetX = mouseY * 0.4 + scrollProgress * Math.PI;
-    const targetY = mouseX * 0.4;
+    const locked = lockedRef?.current ?? false;
+    const j = Math.min(1, Math.max(0, journeyRef?.current ?? 0));
+    const sm = scaleMulRef?.current ?? scaleMultiplier;
+    const orbitMul = THREE.MathUtils.lerp(1, ORB_EXPAND_SCALE, j) * sm;
+
+    if (locked) {
+      meshRef.current.rotation.x += (0 - meshRef.current.rotation.x) * 0.1;
+      meshRef.current.rotation.y += (0 - meshRef.current.rotation.y) * 0.1;
+      meshRef.current.rotation.z += (0 - meshRef.current.rotation.z) * 0.1;
+      const s = meshRef.current.scale.x;
+      meshRef.current.scale.setScalar(s + (orbitMul - s) * 0.12);
+      return;
+    }
+
+    const mx = mouseRef?.current?.x ?? mouseX;
+    const my = mouseRef?.current?.y ?? mouseY;
+    const targetX = my * 0.4 + scrollProgress * Math.PI;
+    const targetY = mx * 0.4;
     meshRef.current.rotation.x += (targetX - meshRef.current.rotation.x) * 0.05;
     meshRef.current.rotation.y += (targetY - meshRef.current.rotation.y + delta * 0.2) * 0.05;
 
-    // Subtle breathe scale
     const breathe = Math.sin(state.clock.elapsedTime * 0.8) * 0.04 + 1;
-    meshRef.current.scale.setScalar(breathe);
+    meshRef.current.scale.setScalar(orbitMul * breathe);
   });
 
   return (
     <mesh ref={meshRef}>
-      <icosahedronGeometry args={[1.4, 6]} />
+      <icosahedronGeometry args={[1.75, 6]} />
       <shaderMaterial
         ref={matRef}
         vertexShader={vertexShader}

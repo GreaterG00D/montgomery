@@ -46,7 +46,7 @@ function DNA() {
             {/* Strand B sphere */}
             <mesh position={[p.x2, p.y, p.z2]}>
               <sphereGeometry args={[0.06, 8, 8]} />
-              <meshBasicMaterial color="#00aaff" />
+              <meshBasicMaterial color="#6a9fb8" />
             </mesh>
             {/* Cross rung every 4 */}
             {i % 4 === 0 && (
@@ -79,8 +79,8 @@ export default function ShowcaseScene() {
     >
       <AdaptiveDpr pixelated />
       <ambientLight intensity={0.5} />
-      <pointLight position={[3, 3, 3]} color="#ff6b00" intensity={2} />
-      <pointLight position={[-3, -3, 3]} color="#00aaff" intensity={1} />
+      <pointLight position={[3, 3, 3]} color="#ff8200" intensity={2} />
+      <pointLight position={[-3, -3, 3]} color="#6a9fb8" intensity={1} />
       <DNA />
     </Canvas>
   );

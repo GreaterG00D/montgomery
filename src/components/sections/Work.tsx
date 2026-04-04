@@ -23,14 +23,14 @@ const PROJECTS: Record<Tab, Array<{
       category: "Video Content",
       description: "The mothership. Where the chaos lives, breathes, and occasionally gets demonetized.",
       href: "https://www.youtube.com/@WilliamMontgomery",
-      accent: "#ff2d2d",
+      accent: "#b4232a",
     },
     {
       title: "Cameo",
       category: "Personalized Videos",
       description: "Book me for birthdays, roasts, pep talks, or just because you need someone to scream at your ex.",
       href: "https://www.cameo.com/wfmontgomery",
-      accent: "#ff6b00",
+      accent: "#ff8200",
     },
     {
       title: "Instagram",
@@ -44,7 +44,7 @@ const PROJECTS: Record<Tab, Array<{
       category: "Short Form",
       description: "Bite-sized chaos. The algorithm and I have a complicated relationship.",
       href: "https://www.tiktok.com/@williamfmontgomery",
-      accent: "#00aaff",
+      accent: "#6a9fb8",
     },
   ],
   "off-platform": [
@@ -53,21 +53,21 @@ const PROJECTS: Record<Tab, Array<{
       category: "Clothing & Gear",
       description: "Wear the energy. Limited runs, maximum drip. 'Never Gonna Stop' isn't just a tagline.",
       href: "#merch",
-      accent: "#ff6b00",
+      accent: "#ff8200",
     },
     {
       title: "Collaborations",
       category: "Brand Partnerships",
       description: "Selective, intentional, and always on-brand. If you want me involved, you want it done right.",
       href: "#contact",
-      accent: "#ffaa00",
+      accent: "#ffd24a",
     },
     {
       title: "Live Appearances",
       category: "Events & Shows",
       description: "Sometimes the content needs to happen in person. Loud, live, and absolutely unscripted.",
       href: "#contact",
-      accent: "#ff2d2d",
+      accent: "#b4232a",
     },
     {
       title: "Community",
@@ -245,14 +245,14 @@ export default function Work() {
         paddingTop: "clamp(6rem, 18vh, 14rem)",
         paddingBottom: "clamp(6rem, 18vh, 14rem)",
         minHeight: "100vh",
-        background: "#050508",
+        background: "#0a0a0a",
       }}
       aria-labelledby="work-heading"
     >
       {/* Full-width entry divider — red accent for energy */}
       <div className="absolute top-0 left-0 right-0" aria-hidden="true">
-        <div style={{ height: "1px", background: "linear-gradient(90deg, transparent 0%, rgba(255,45,45,0.5) 30%, rgba(255,107,0,0.5) 70%, transparent 100%)" }} />
-        <div style={{ height: "80px", background: "linear-gradient(180deg, rgba(255,45,45,0.03) 0%, transparent 100%)" }} />
+        <div style={{ height: "1px", background: "linear-gradient(90deg, transparent 0%, rgba(180,35,42,0.45) 30%, rgba(255,130,0,0.45) 70%, transparent 100%)" }} />
+        <div style={{ height: "80px", background: "linear-gradient(180deg, rgba(180,35,42,0.04) 0%, transparent 100%)" }} />
       </div>
 
       {/* Section number badge */}
@@ -263,7 +263,7 @@ export default function Work() {
         <div ref={headingRef} className="mb-20">
           <div className="flex items-center gap-3 mb-6">
             <span className="line-accent" aria-hidden="true" />
-            <p className="text-[10px] tracking-[0.3em] uppercase text-[#ff6b00]">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-[#ff8200]">
               The Playbook
             </p>
           </div>
@@ -283,7 +283,7 @@ export default function Work() {
               <br />
               <span
                 style={{
-                  background: "linear-gradient(135deg, #ff2d2d, #ff6b00)",
+                  background: "linear-gradient(135deg, #b4232a, #ff8200)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -307,7 +307,7 @@ export default function Work() {
                   onClick={() => setActiveTab(tab)}
                   className="px-5 py-2 text-[10px] tracking-[0.15em] uppercase transition-all duration-300"
                   style={{
-                    background: activeTab === tab ? "rgba(255,107,0,0.15)" : "transparent",
+                    background: activeTab === tab ? "rgba(255,130,0,0.15)" : "transparent",
                     color: activeTab === tab ? "#fff" : "#666680",
                     borderRight: tab === "on-platform" ? "1px solid rgba(255,255,255,0.08)" : "none",
                   }}

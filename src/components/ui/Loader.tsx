@@ -96,7 +96,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
     <div
       ref={containerRef}
       className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
-      style={{ background: "#050508" }}
+      style={{ background: "#0a0a0a" }}
     >
       {/* Title + state icon move as one unit */}
       <div ref={heroRef} className="flex flex-col items-center">
@@ -113,7 +113,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
           <br />
           <span
             style={{
-              background: "linear-gradient(135deg, #ff2d2d, #ff6b00, #ffaa00)",
+              background: "linear-gradient(135deg, #b4232a, #ff8200, #ffd24a)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -136,9 +136,9 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
               <rect ref={clipRectRef} x="0" y="-10" width="0" height="190" />
             </clipPath>
             <linearGradient id="tn-fill-gradient" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#ff2d2d" />
-              <stop offset="50%" stopColor="#ff6b00" />
-              <stop offset="100%" stopColor="#ffaa00" />
+              <stop offset="0%" stopColor="#b4232a" />
+              <stop offset="50%" stopColor="#ff8200" />
+              <stop offset="100%" stopColor="#ffd24a" />
             </linearGradient>
           </defs>
 

@@ -1,9 +1,15 @@
 "use client";
 
-import { useRef, useMemo, useEffect } from "react";
+import { useRef, useMemo, useEffect, useLayoutEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import type { Points, ShaderMaterial } from "three";
+
+/** <1 slows drift / spiral / rotation; motion shape unchanged */
+const PARTICLE_TIME_SCALE = 0.5;
+
+/** Screen-space point size; lower = smaller bokeh (was 280). */
+const POINT_SIZE_REF = 168;
 
 // Original ParticleField shader + one extra mode:
 //   uClearCenter 0→1  pushes particles radially outward, opening a hole (Ring section)
@@ -44,7 +50,7 @@ const vertexShader = /* glsl */ `
     float radialFade = 1.0 - smoothstep(uSpread * 0.55, uSpread * 1.05, dist);
 
     vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-    gl_PointSize    = aScale * (280.0 / -mvPosition.z);
+    gl_PointSize    = aScale * (${POINT_SIZE_REF}.0 / -mvPosition.z);
     gl_Position     = projectionMatrix * mvPosition;
 
     vAlpha = smoothstep(0.0, 3.0, -mvPosition.z) * 0.7 * radialFade;
@@ -57,7 +63,7 @@ const fragmentShader = /* glsl */ `
 
   void main() {
     float dist  = length(gl_PointCoord - 0.5);
-    float alpha = 1.0 - smoothstep(0.35, 0.5, dist);
+    float alpha = 1.0 - smoothstep(0.38, 0.5, dist);
     gl_FragColor = vec4(uColor, alpha * vAlpha);
   }
 `;
@@ -71,7 +77,7 @@ interface Props {
 
 export default function PersistentParticleField({
   count       = 700,
-  color       = "#ff6b00",
+  color       = "#ff8200",
   spread      = 8,
   clearRadius = 1.5,
 }: Props) {
@@ -98,7 +104,7 @@ export default function PersistentParticleField({
       positions[i * 3 + 1] = (Math.random() - 0.5) * spread * 2;
       positions[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
 
-      scales[i] = Math.random() * 1.5 + 0.3;
+      scales[i] = Math.random() * 0.95 + 0.22;
       speeds[i] = Math.random() * 1.5 + 0.5;
     }
 
@@ -112,12 +118,16 @@ export default function PersistentParticleField({
     uColor:         { value: new THREE.Color(color) },
     uClearCenter:   { value: 0 },
     uClearRadius:   { value: clearRadius },
-  }), [color, spread, clearRadius]);
+  }), [spread, clearRadius]);
+
+  useLayoutEffect(() => {
+    matRef.current?.uniforms.uColor.value.set(color);
+  }, [color]);
 
   useFrame((_, delta) => {
     if (!matRef.current) return;
     const u = matRef.current.uniforms;
-    u.uTime.value += delta;
+    u.uTime.value += delta * PARTICLE_TIME_SCALE;
 
     // Detect ring section
     let targetClear = 0;
@@ -129,7 +139,9 @@ export default function PersistentParticleField({
     clearRef.current += (targetClear - clearRef.current) * 0.03;
     u.uClearCenter.value = clearRef.current;
 
-    if (pointsRef.current) pointsRef.current.rotation.y += delta * 0.03;
+    if (pointsRef.current) {
+      pointsRef.current.rotation.y += delta * 0.03 * PARTICLE_TIME_SCALE;
+    }
   });
 
   return (

@@ -102,13 +102,13 @@ export default function Merch() {
         paddingTop: "clamp(6rem, 18vh, 14rem)",
         paddingBottom: "clamp(6rem, 18vh, 14rem)",
         minHeight: "100vh",
-        background: "linear-gradient(180deg, #050508 0%, #090907 50%, #050508 100%)",
+        background: "linear-gradient(180deg, #0a0a0a 0%, #0c0c0c 50%, #0a0a0a 100%)",
       }}
     >
       {/* Full-width entry divider — warm orange/gold for merch */}
       <div className="absolute top-0 left-0 right-0" aria-hidden="true">
-        <div style={{ height: "1px", background: "linear-gradient(90deg, transparent 0%, rgba(255,170,0,0.5) 30%, rgba(255,107,0,0.5) 70%, transparent 100%)" }} />
-        <div style={{ height: "80px", background: "linear-gradient(180deg, rgba(255,170,0,0.03) 0%, transparent 100%)" }} />
+        <div style={{ height: "1px", background: "linear-gradient(90deg, transparent 0%, rgba(255,210,74,0.45) 30%, rgba(255,130,0,0.45) 70%, transparent 100%)" }} />
+        <div style={{ height: "80px", background: "linear-gradient(180deg, rgba(255,130,0,0.04) 0%, transparent 100%)" }} />
       </div>
 
       {/* Section number badge */}
@@ -120,7 +120,7 @@ export default function Merch() {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <span className="line-accent" aria-hidden="true" />
-              <p className="text-[10px] tracking-[0.3em] uppercase text-[#ff6b00]">
+              <p className="text-[10px] tracking-[0.3em] uppercase text-[#ff8200]">
                 The Store
               </p>
             </div>
@@ -138,7 +138,7 @@ export default function Merch() {
               <br />
               <span
                 style={{
-                  background: "linear-gradient(135deg, #ff6b00, #ffaa00)",
+                  background: "linear-gradient(135deg, #ff8200, #ffd24a)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -159,25 +159,25 @@ export default function Merch() {
           {MERCH_ITEMS.map((item) => (
             <div
               key={item.name}
-              className="merch-card group relative border-glow p-8 cursor-pointer transition-all duration-300 hover:border-[rgba(255,107,0,0.4)]"
+              className="merch-card group relative border-glow p-8 cursor-pointer transition-all duration-300 hover:border-[rgba(255,130,0,0.4)]"
               style={{ background: "rgba(255,255,255,0.02)" }}
             >
               {/* Placeholder art area */}
               <div
                 className="relative w-full aspect-square mb-8 overflow-hidden flex items-center justify-center"
                 style={{
-                  background: "radial-gradient(circle at 50% 50%, rgba(255,107,0,0.08), transparent 70%)",
+                  background: "radial-gradient(circle at 50% 50%, rgba(255,130,0,0.08), transparent 70%)",
                   border: "1px solid rgba(255,255,255,0.04)",
                 }}
               >
                 {/* Geometric placeholder art */}
                 <div className="relative w-24 h-24">
                   <div
-                    className="absolute inset-0 border border-[#ff6b00]/30 rotate-45 animate-spin-slow"
+                    className="absolute inset-0 border border-[#ff8200]/30 rotate-45 animate-spin-slow"
                     aria-hidden="true"
                   />
                   <div
-                    className="absolute inset-4 border border-[#ff2d2d]/20 rotate-12"
+                    className="absolute inset-4 border border-[#b4232a]/20 rotate-12"
                     aria-hidden="true"
                   />
                   <div
@@ -189,7 +189,7 @@ export default function Merch() {
                         fontFamily: "var(--font-bebas), sans-serif",
                         fontSize: "2rem",
                         letterSpacing: "0.05em",
-                        background: "linear-gradient(135deg, #ff2d2d, #ff6b00)",
+                        background: "linear-gradient(135deg, #b4232a, #ff8200)",
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent",
                         backgroundClip: "text",
@@ -204,9 +204,9 @@ export default function Merch() {
                   <div
                     className="absolute top-3 right-3 text-[9px] tracking-[0.2em] uppercase px-3 py-1"
                     style={{
-                      background: "rgba(255,107,0,0.15)",
-                      border: "1px solid rgba(255,107,0,0.3)",
-                      color: "#ff6b00",
+                      background: "rgba(255,130,0,0.15)",
+                      border: "1px solid rgba(255,130,0,0.3)",
+                      color: "#ff8200",
                     }}
                   >
                     {item.tag}
@@ -233,12 +233,12 @@ export default function Merch() {
                     style={{
                       fontFamily: "var(--font-bebas), sans-serif",
                       fontSize: "1.3rem",
-                      color: "#ff6b00",
+                      color: "#ff8200",
                     }}
                   >
                     {item.price}
                   </span>
-                  <span className="text-[9px] tracking-[0.2em] uppercase text-[#666680] group-hover:text-[#ff6b00] transition-colors">
+                  <span className="text-[9px] tracking-[0.2em] uppercase text-[#666680] group-hover:text-[#ff8200] transition-colors">
                     View →
                   </span>
                 </div>
@@ -251,7 +251,7 @@ export default function Merch() {
         <div
           ref={ctaBannerRef}
           className="relative overflow-hidden p-10 md:p-16 border-glow flex flex-col md:flex-row items-center justify-between gap-8"
-          style={{ background: "rgba(255,107,0,0.04)" }}
+          style={{ background: "rgba(255,130,0,0.05)" }}
         >
           {/* Background big text */}
           <div
@@ -263,7 +263,7 @@ export default function Merch() {
                 fontFamily: "var(--font-bebas), sans-serif",
                 fontSize: "12rem",
                 color: "transparent",
-                WebkitTextStroke: "1px rgba(255,107,0,0.06)",
+                WebkitTextStroke: "1px rgba(255,130,0,0.07)",
                 letterSpacing: "0.1em",
                 whiteSpace: "nowrap",
               }}

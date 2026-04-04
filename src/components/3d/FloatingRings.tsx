@@ -43,10 +43,10 @@ export default function FloatingRings() {
 
   return (
     <group ref={groupRef}>
-      <Ring radius={2.2} tube={0.008} color="#ff6b00" rotation={[0.3, 0, 0]} speed={0.3} phase={0} />
-      <Ring radius={2.8} tube={0.006} color="#ff2d2d" rotation={[0.9, 0.5, 0.2]} speed={-0.2} phase={1} />
-      <Ring radius={3.5} tube={0.005} color="#00aaff" rotation={[1.5, 0.3, 0.8]} speed={0.15} phase={2} />
-      <Ring radius={1.8} tube={0.01} color="#ffaa00" rotation={[0.6, 1.2, 0]} speed={-0.35} phase={0.5} />
+      <Ring radius={2.2} tube={0.008} color="#ff8200" rotation={[0.3, 0, 0]} speed={0.3} phase={0} />
+      <Ring radius={2.8} tube={0.006} color="#b4232a" rotation={[0.9, 0.5, 0.2]} speed={-0.2} phase={1} />
+      <Ring radius={3.5} tube={0.005} color="#6a9fb8" rotation={[1.5, 0.3, 0.8]} speed={0.15} phase={2} />
+      <Ring radius={1.8} tube={0.01} color="#ffd24a" rotation={[0.6, 1.2, 0]} speed={-0.35} phase={0.5} />
     </group>
   );
 }

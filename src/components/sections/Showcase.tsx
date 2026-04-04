@@ -107,13 +107,13 @@ export default function Showcase() {
         paddingTop: "clamp(6rem, 18vh, 14rem)",
         paddingBottom: "clamp(6rem, 18vh, 14rem)",
         minHeight: "100vh",
-        background: "linear-gradient(180deg, #050508 0%, #06060e 40%, #08081a 65%, #050508 100%)",
+        background: "linear-gradient(180deg, #0a0a0a 0%, #0a1016 40%, #0c1420 65%, #0a0a0a 100%)",
       }}
     >
       {/* Full-width entry divider — blue accent for the 3D showcase */}
       <div className="absolute top-0 left-0 right-0" aria-hidden="true">
-        <div style={{ height: "1px", background: "linear-gradient(90deg, transparent 0%, rgba(0,170,255,0.4) 30%, rgba(0,170,255,0.4) 70%, transparent 100%)" }} />
-        <div style={{ height: "80px", background: "linear-gradient(180deg, rgba(0,170,255,0.03) 0%, transparent 100%)" }} />
+        <div style={{ height: "1px", background: "linear-gradient(90deg, transparent 0%, rgba(106,159,184,0.45) 30%, rgba(106,159,184,0.45) 70%, transparent 100%)" }} />
+        <div style={{ height: "80px", background: "linear-gradient(180deg, rgba(106,159,184,0.04) 0%, transparent 100%)" }} />
       </div>
 
       {/* Section number badge */}
@@ -124,7 +124,7 @@ export default function Showcase() {
         <div ref={headingRef} className="mb-20 text-center">
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="line-accent" aria-hidden="true" />
-            <p className="text-[10px] tracking-[0.3em] uppercase text-[#ff6b00]">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-[#ff8200]">
               The Journey
             </p>
             <span className="line-accent rotate-180" aria-hidden="true" />
@@ -143,7 +143,7 @@ export default function Showcase() {
             The{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #ff2d2d, #ff6b00, #ffaa00)",
+                background: "linear-gradient(135deg, #b4232a, #ff8200, #ffd24a)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -171,7 +171,7 @@ export default function Showcase() {
                 {i < MILESTONES.length - 1 && (
                   <div
                     className="absolute left-[11px] top-6 bottom-0 w-px"
-                    style={{ background: "linear-gradient(180deg, rgba(255,107,0,0.3), transparent)" }}
+                    style={{ background: "linear-gradient(180deg, rgba(255,130,0,0.3), transparent)" }}
                     aria-hidden="true"
                   />
                 )}
@@ -181,14 +181,14 @@ export default function Showcase() {
                   <div
                     className="w-6 h-6 rounded-full border flex items-center justify-center"
                     style={{
-                      borderColor: i === MILESTONES.length - 1 ? "#ff6b00" : "rgba(255,107,0,0.3)",
-                      background: i === MILESTONES.length - 1 ? "rgba(255,107,0,0.15)" : "transparent",
+                      borderColor: i === MILESTONES.length - 1 ? "#ff8200" : "rgba(255,130,0,0.3)",
+                      background: i === MILESTONES.length - 1 ? "rgba(255,130,0,0.15)" : "transparent",
                     }}
                   >
                     <div
                       className="w-2 h-2 rounded-full"
                       style={{
-                        background: i === MILESTONES.length - 1 ? "#ff6b00" : "rgba(255,107,0,0.4)",
+                        background: i === MILESTONES.length - 1 ? "#ff8200" : "rgba(255,130,0,0.4)",
                       }}
                       aria-hidden="true"
                     />
@@ -199,7 +199,7 @@ export default function Showcase() {
                 <div>
                   <div
                     className="text-[10px] tracking-[0.25em] mb-1"
-                    style={{ color: "#ff6b00" }}
+                    style={{ color: "#ff8200" }}
                   >
                     {m.year}
                   </div>
@@ -223,7 +223,7 @@ export default function Showcase() {
           >
             <Suspense fallback={
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-8 h-8 border border-[#ff6b00]/30 rounded-full animate-spin" />
+                <div className="w-8 h-8 border border-[#ff8200]/30 rounded-full animate-spin" />
               </div>
             }>
               <ShowcaseScene />
@@ -233,12 +233,12 @@ export default function Showcase() {
             {["top-0 left-0", "top-0 right-0", "bottom-0 left-0", "bottom-0 right-0"].map((pos) => (
               <div
                 key={pos}
-                className={`absolute ${pos} w-6 h-6 border-[#ff6b00]/40 pointer-events-none`}
+                className={`absolute ${pos} w-6 h-6 border-[#ff8200]/40 pointer-events-none`}
                 style={{
-                  borderTop: pos.includes("top") ? "1px solid rgba(255,107,0,0.4)" : "none",
-                  borderBottom: pos.includes("bottom") ? "1px solid rgba(255,107,0,0.4)" : "none",
-                  borderLeft: pos.includes("left") ? "1px solid rgba(255,107,0,0.4)" : "none",
-                  borderRight: pos.includes("right") ? "1px solid rgba(255,107,0,0.4)" : "none",
+                  borderTop: pos.includes("top") ? "1px solid rgba(255,130,0,0.4)" : "none",
+                  borderBottom: pos.includes("bottom") ? "1px solid rgba(255,130,0,0.4)" : "none",
+                  borderLeft: pos.includes("left") ? "1px solid rgba(255,130,0,0.4)" : "none",
+                  borderRight: pos.includes("right") ? "1px solid rgba(255,130,0,0.4)" : "none",
                 }}
                 aria-hidden="true"
               />
