@@ -1,7 +1,6 @@
 /**
  * Per-viewport-section accent palettes → CSS variables + particles / orb.
- * Southern / Tennessee lane: Volunteer orange, bourbon & gold, porch blues;
- * ring section dials up honky-tonk neon; links stay gentleman burgundy & cream.
+ * Hero: TN lane. Socials: electric purple. Ring: neon blue & green. Links: burgundy & cream.
  */
 
 export type SectionId = "hero" | "socials" | "ring-section" | "links";
@@ -23,16 +22,16 @@ export const PALETTES: Record<SectionId, SectionPalette> = {
     cool: "#6a9fb8",
   },
   socials: {
-    warmA: "#c73e54",
-    warmB: "#ff9340",
-    warmC: "#fff4c4",
-    cool: "#5eb8c9",
+    warmA: "#581c87",
+    warmB: "#c026d3",
+    warmC: "#e879f9",
+    cool: "#a78bfa",
   },
   "ring-section": {
-    warmA: "#ff2d8b",
-    warmB: "#c4f000",
-    warmC: "#ff9f1c",
-    cool: "#00e0ff",
+    warmA: "#00ff88",
+    warmB: "#00b8ff",
+    warmC: "#b8ff00",
+    cool: "#00fff2",
   },
   links: {
     warmA: "#722f37",
